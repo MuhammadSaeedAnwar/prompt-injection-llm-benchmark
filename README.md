@@ -1,118 +1,61 @@
-# Prompt Injection LLM Benchmark
+# Prompt Injection Benchmark: A Multilingual Dataset for LLM Security
 
-[![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
-[![Dataset](https://img.shields.io/badge/Dataset-Research%20Grade-blue.svg)](#dataset-overview)
-[![Status](https://img.shields.io/badge/Status-Active-brightgreen.svg)](#)
+A comprehensive benchmark dataset for evaluating large language model robustness against prompt injection attacks across 14 languages and 5 attack categories.
 
 ## Overview
 
-This repository contains a comprehensive benchmark dataset for evaluating prompt injection vulnerabilities in Large Language Models (LLMs). The dataset provides a structured collection of prompt injection attacks across multiple attack vectors, targeting diverse LLM architectures including GPT-3.5, GPT-4, Claude-2, and Llama-2-70b.
+Prompt injection attacks represent one of the most pressing security challenges in deployed language models. While researchers have documented various attack vectors, most studies focus on English-language scenarios or single attack types. This benchmark addresses that gap by providing a structured evaluation framework that tests models across linguistic and methodological boundaries.
 
-## Research Objective
+This dataset contains 250 carefully curated samples spanning 14 languages and five distinct attack categories. By evaluating both commercial and open-weight models, we establish baseline performance metrics and reveal critical differences in robustness across model architectures and deployment contexts. The findings have immediate implications for practitioners deploying LLMs in multilingual environments and for researchers developing more secure systems.
 
-This project aims to:
-- **Systematize prompt injection threats** in contemporary LLM systems
-- **Evaluate defense mechanisms** across different model architectures
-- **Establish reproducible benchmarks** for LLM safety and robustness assessment
-- **Advance the field** of AI cybersecurity through rigorous empirical analysis
+## Dataset Structure
 
-## Features
+The benchmark comprises 250 samples distributed across multiple dimensions:
 
-- **Multi-Model Evaluation**: Assessments across 4 leading LLM architectures
-- **Diverse Attack Vectors**: Direct injection, indirect injection, jailbreaks, and prompt leaking techniques
-- **Standardized Metrics**: Severity classification (low, medium, high, critical) and defense categorization
-- **Reproducible Framework**: Clearly documented methodology enabling independent verification
-- **Research-Ready Format**: Academic-quality dataset suitable for machine learning research and threat modeling
+**Languages**: The dataset covers 14 languages representing different linguistic families and writing systems: English, Mandarin Chinese, Spanish, French, Arabic, German, Japanese, Hindi, Portuguese, Russian, Korean, Italian, Dutch, and Turkish.
 
-## Dataset Overview
+**Attack Categories**: Five distinct attack vectors are represented. Direct injection attacks embed malicious instructions directly into user prompts. Indirect injection attacks manipulate external data sources that the model processes. Multi-turn escalation attacks gradually escalate requests across multiple conversation turns to bypass safety measures. Jailbreaking attacks use social engineering or roleplay scenarios to circumvent safeguards. Cross-lingual transfer attacks exploit multilingual models by embedding instructions in languages different from the model's training focus.
 
-### Public Sample
-A curated public sample of 25 representative attack instances is included in this repository:
+**Models Evaluated**: The benchmark evaluates five models representing different architectures and deployment models: GPT-4o (commercial), Claude 3.5 Sonnet (commercial), Gemini 1.5 Pro (commercial), Llama 3 (open-weight), and Mistral 7B (open-weight).
 
-- **Location**: [`data/public_sample_25.csv`](data/public_sample_25.csv)
-- **Records**: 25 anonymized prompt injection attempts
-- **Columns**: 8 structured attributes (attack type, prompt, model, outcome, severity, mitigation)
-- **Format**: CSV with UTF-8 encoding
+## Key Findings
 
-### Full Benchmark Dataset
-The complete benchmark dataset is hosted on Zenodo:
+Our analysis reveals substantial performance gaps between commercial and open-weight models. Under indirect injection attacks, open-weight models failed at nearly double the rate of commercial models. Multi-turn escalation attacks showed similar disparities, with open-weight models demonstrating significantly weaker resistance to gradually escalated requests. Notably, commercial models showed more consistent performance across languages, while open-weight models exhibited greater variance in robustness across different linguistic contexts. These findings suggest that security considerations should be a primary factor when selecting models for production deployment, particularly in security-sensitive applications.
 
-- **DOI**: [10.5281/zenodo.XXXXXXX](https://zenodo.org)
-- **Records**: 1,200+ comprehensive attack evaluations
-- **Coverage**: All attack vectors, mitigation strategies, and model variants
-- **Access**: Open access for research and reproducibility
+## Dataset Details
 
-### Schema Documentation
-For detailed information about dataset columns, data types, and classifications, refer to [`data/schema.md`](data/schema.md).
+The dataset is structured as a JSON-formatted collection where each sample includes the original prompt, attack category, target language, model responses, and success indicators. Full documentation of the data format is available in the `data/` directory alongside the complete dataset.
 
-## Dataset Composition
+Accessing the benchmark: The complete dataset is available on Zenodo (see citation below) and includes all 250 samples, model evaluation results, and detailed analysis notebooks for reproducing our findings.
 
-| Aspect | Details |
-|--------|---------|
-| **Attack Types** | Direct Injection, Indirect Injection, Jailbreak, Prompt Leaking |
-| **Models Evaluated** | GPT-3.5-turbo, GPT-4, Claude-2, Llama-2-70b |
-| **Severity Levels** | Low, Medium, High, Critical |
-| **Mitigation Strategies** | Input Filtering, Instruction Hierarchy, Prompt Caching |
-| **Sample Records** | 25 (public) / 1,200+ (full dataset) |
+## How to Cite
 
-## Reproducibility
+If you use this dataset in your research, please cite it as:
 
-All experiments follow standardized protocols enabling independent reproduction. To work with the public sample dataset:
-
-```python
-import pandas as pd
-
-# Load the public sample
-df = pd.read_csv('data/public_sample_25.csv')
-
-# Display dataset structure
-print(df.head())
-print(df.info())
-print(df.describe())
-
-# Analyze attack distribution
-print(df['attack_type'].value_counts())
-print(df['severity_level'].value_counts())
-print(df['attack_success'].value_counts())
+```
+Anwar, M. S. (2026). Prompt Injection Benchmark: A Multilingual Dataset for LLM Security [Data set]. Zenodo. https://doi.org/10.5281/zenodo.19364462
 ```
 
-## Citation
-
-If you use this benchmark in your research, please cite it as follows:
-
+BibTeX format:
 ```bibtex
-@dataset{anwar2026promptinjection,
-  title={Prompt Injection LLM Benchmark: Evaluating Safety and Robustness of Large Language Models},
+@dataset{anwar2026prompt,
+  title={Prompt Injection Benchmark: A Multilingual Dataset for LLM Security},
   author={Anwar, Muhammad Saeed},
   year={2026},
-  howpublished={Zenodo},
-  doi={10.5281/zenodo.XXXXXXX},
-  url={https://zenodo.org/record/XXXXXXX}
+  publisher={Zenodo},
+  doi={10.5281/zenodo.19364462},
+  url={https://doi.org/10.5281/zenodo.19364462}
 }
 ```
 
+## About the Author
+
+I'm Muhammad Saeed Anwar, a cybersecurity researcher and AI systems specialist. I hold a BSCS from CUST Islamabad and currently work as a Lab Instructor. My security credentials include Google Cybersecurity Certification, ISC2 Certified in Cybersecurity (CC), and IBM AI/Machine Learning Professional Certification. My research focuses on LLM security, adversarial robustness, and safe AI systems.
+
+Connect with me: [GitHub](https://github.com/MuhammadSaeedAnwar) | [LinkedIn](https://linkedin.com/in/muhammadsaeedanwar)
+
 ## License
 
-This dataset is licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License. You are free to:
-- Share, copy, and redistribute the dataset
-- Adapt and build upon the dataset for any purpose
+[![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-**Attribution Required**: Please cite this work appropriately in your publications and research outputs.
-
-See [LICENSE](LICENSE) for full terms.
-
-## Contact & Support
-
-For questions, suggestions, or technical issues:
-- **GitHub Issues**: [Open an issue](https://github.com/MuhammadSaeedAnwar/prompt-injection-llm-benchmark/issues)
-- **Email**: For direct inquiries, use GitHub Issues for faster response
-
-## Acknowledgments
-
-This research contributes to the broader effort in AI safety and cybersecurity, advancing our understanding of LLM vulnerabilities and defense mechanisms.
-
----
-
-**Version**: 1.0  
-**Last Updated**: May 13, 2026  
-**Status**: Active & Maintained
+This dataset and accompanying code are released under the MIT License. See the LICENSE file for details.
