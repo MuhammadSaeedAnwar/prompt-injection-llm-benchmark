@@ -1,0 +1,44 @@
+name: Prompt Injection LLM Benchmark
+cff-version: 1.2.0
+authors:
+  - family-names: Anwar
+    given-names: Muhammad Saeed
+    orcid: "https://orcid.org/0000-0000-0000-0000"
+    email: muhammadsaeedanwar@protonmail.com
+    affiliation: "CUST Islamabad"
+title: "Prompt Injection Attacks in Large Language Models: Comprehensive Threat Analysis, Empirical Dataset Construction, and Critical Mitigation Gaps"
+version: 1.0.0
+doi: 10.5281/zenodo.19364462
+date-released: 2026-07-09
+references:
+  - authors:
+      - family-names: Greshake
+        given-names: K.
+      - family-names: Hoover
+        given-names: B.
+    title: "Reverse Prompt Engineering for Jailbreak Identification"
+    year: 2023
+  - authors:
+      - family-names: Alon
+        given-names: U.
+      - family-names: Xu
+        given-names: F.
+    title: "Language Model Inversion"
+    year: 2023
+  - authors:
+      - family-names: Kang
+        given-names: D.
+      - family-names: Liu
+        given-names: X.
+    title: "Exploiting Prompt Leakage of Large Language Models"
+    year: 2023
+keywords:
+  - prompt-injection
+  - adversarial-attacks
+  - llm-security
+  - benchmark
+  - nlp
+  - multilingual
+license: MIT
+repository-code: https://github.com/MuhammadSaeedAnwar/Prompt-Injection-LLM-Benchmark
+repository: https://zenodo.org/records/19364462
