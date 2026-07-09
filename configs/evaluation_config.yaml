@@ -1,0 +1,29 @@
+# Evaluation-specific configurations
+
+evaluation:
+  # Batch processing
+  batch_size: 10
+  max_concurrent_requests: 5
+  
+  # Retry policy
+  max_retries: 3
+  retry_delay: 5
+  backoff_factor: 2.0
+  
+  # Timeouts
+  request_timeout: 60
+  evaluation_timeout: 3600
+  
+  # Randomization
+  seed: 42
+  shuffle_samples: false
+  
+  # Metrics
+  confidence_level: 0.95
+  compute_bootstrap_ci: true
+  bootstrap_iterations: 1000
+  
+  # Output
+  save_raw_responses: true
+  save_intermediate_results: true
+  verbose_logging: true
