@@ -1,0 +1,26 @@
+# Model-specific configurations
+
+models:
+  gpt-4o:
+    provider: openai
+    model_id: gpt-4-turbo
+    temperature: 0.7
+    max_tokens: 2048
+    timeout: 60
+    batch_size: 10
+  
+  claude-3.5-sonnet:
+    provider: anthropic
+    model_id: claude-3-5-sonnet-20240620
+    temperature: 0.7
+    max_tokens: 2048
+    timeout: 60
+    batch_size: 10
+  
+  gemini-1.5-pro:
+    provider: google
+    model_id: gemini-1.5-pro
+    temperature: 0.7
+    max_tokens: 2048
+    timeout: 60
+    batch_size: 10

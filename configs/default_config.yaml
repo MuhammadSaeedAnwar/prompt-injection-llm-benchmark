@@ -1,0 +1,46 @@
+# Default configuration for prompt injection benchmark
+
+# Model Configuration
+models:
+  - name: gpt-4o
+    provider: openai
+    temperature: 0.7
+    max_tokens: 2048
+    timeout: 60
+  
+  - name: claude-3.5-sonnet
+    provider: anthropic
+    temperature: 0.7
+    max_tokens: 2048
+    timeout: 60
+
+# Evaluation Configuration
+evaluation:
+  batch_size: 10
+  max_retries: 3
+  retry_delay: 5
+  timeout: 60
+  seed: 42
+
+# Output Configuration
+output:
+  results_dir: results/
+  figures_dir: figures/
+  logs_dir: results/logs/
+  format: [csv, json, latex]
+  dpi: 300
+  style: seaborn-v0_8-darkgrid
+
+# Dataset Configuration
+dataset:
+  path: dataset/prompt_injection_dataset_250.csv
+  validate: true
+  check_duplicates: true
+
+# Paths
+paths:
+  dataset: dataset/
+  config: configs/
+  logs: results/logs/
+  results: results/
+  figures: figures/
